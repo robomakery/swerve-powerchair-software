@@ -1,0 +1,55 @@
+<launch>
+	<rosparam file="$(find RMC_1_hardware_interface)/config/hardware.yaml" command="load"/>
+	<rosparam file="$(find RMC_1_hardware_interface)/config/controllers_new.yaml" command="load"/>
+	<!--<rosparam file="$(find RMC_1_hardware_interface)/config/controllers.yaml" command="load"/>-->
+	<rosparam file="$(find RMC_1_hardware_interface)/config/joint_limits.yaml" command="load"/>
+
+       <arg name="model"  default="$(find test_rover_V1)/urdf/new_wheelchair.urdf.xacro"/>
+       <arg name="use_tf_static" default="false"/>
+
+
+    <node name="serial_node"        pkg="rosserial_python"      type="serial_node.py">
+    <param name="port"              type="string"               value="/dev/ttyUSB0"/>
+    <param name="baud"              type="int"                  value="57600"/>
+    </node>
+
+
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
+     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+          <param name="use_tf_static" value="$(arg use_tf_static)"/>
+   </node>       
+          
+  <!-- Show in Rviz -->
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find test_rover_V1)/urdf.rviz"
+    required="true" /> 
+
+
+
+
+	<node name="RMC_1_hardware_interface" pkg="RMC_1_hardware_interface" type="RMC_1_hardware_interface_node" output="screen" />
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/" 
+	args="
+		/ROBOT/controller/state
+		/ROBOT/controller/position/steer_joint_1
+		/ROBOT/controller/velocity/wheel_joint_1
+	"/>
+	 <!-- joy node -->
+    <node respawn="true" pkg="joy"
+        type="joy_node" name="rover_joy" >
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.12" />
+    <param name="autorepeat_rate" value="20" />
+  </node>
+
+
+ <!-- Axes -->
+  <param name="axis_linear" value="1" type="int"/>
+  <param name="axis_angular" value="0" type="int"/>
+  <param name="scale_linear" value="2" type="double"/>
+  <param name="scale_angular" value="2" type="double"/>
+  <node pkg="learning_joy" type="rover_teleop_joy_fourwheel.py" name="teleop_rover"/>
+</launch>

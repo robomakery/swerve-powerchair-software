@@ -1,0 +1,36 @@
+<launch>
+  <param name="steering_transmission_ratio" type="double" value="8"/>
+  <param name="drive_transmission_ratio" type="double" value="3" />
+  
+  <arg name="model" />
+  <arg name="use_tf_static" default="false"/> 
+
+
+  <param
+    name="robot_description"
+    textfile="$(find test_rover_V1)/urdf/test_rover_fourwheel_gazebo_noxacro.urdf" 
+    />
+  
+<!-- GUI Command 
+textfile="$(find test_rover_V1)/urdf/test_rover_fourwheel_gazebo.urdf" --> 
+  <node name="joint_state_publisher_gui" 
+  pkg="joint_state_publisher_gui" 
+  type="joint_state_publisher_gui">
+  </node>
+  
+  
+<!--GUI Command --> 
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+
+<!--Show in Rviz --> 
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find test_rover_V1)/urdf.rviz"
+    required="true"
+ />
+</launch>

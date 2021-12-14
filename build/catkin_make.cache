@@ -1,0 +1,2 @@
+RMC_1_hardware_interface:learning_joy:odrive_cpp_lib:odrive_publisher:test_rover_V1
+-DCATKIN_DEVEL_PREFIX=/home/dhrengineering/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/dhrengineering/catkin_ws/install -G Unix Makefiles

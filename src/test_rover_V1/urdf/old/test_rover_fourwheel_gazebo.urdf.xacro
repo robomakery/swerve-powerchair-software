@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  xmlns:xacro="http://www.ros.org/wiki/xacro"
+  name="test_rover_fourwheel_gazebo">
+  
+  
+  <xacro:include filename="$(find test_rover_V1)/urdf/xacro_test.xacro" />
+  
+    <link name="base_link" />
+
+  <joint name="base_link_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis_link"/>
+  </joint>
+  
+  <link
+    name="chassis_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.052818"
+        rpy="0 0 0" />
+      <mass
+        value="100.059" />
+      <inertia
+        ixx="3.0083721"
+        ixy="1"
+        ixz="1"
+        iyy="3.010822"
+        iyz="1"
+        izz="5.018653" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.052818"
+        rpy="0 0 0" />
+      <geometry>
+       	<box size="2.4 2.4 0.03" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_V1/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  
+  
+  
+      <gazebo reference="chassis_link">
+      <mu1 value="20.0"/>
+      <mu2 value="10.0"/>
+      <kp value="100.0" />
+      <kd value="1.0" />
+      <material>Gazebo/Grey</material>
+    </gazebo>
+  
+ <xacro:swerve_steer prefix="1" origin_xyz="1.2 1.2 -0.087123" joint_origin_xyz="1.2 1.2 0.08" /> 
+ <xacro:swerve_steer prefix="2" origin_xyz="1.2 -1.2 -0.087123" joint_origin_xyz="1.2 -1.2 0.08" />
+ <xacro:swerve_steer prefix="3" origin_xyz="-1.2 1.2 -0.087123" joint_origin_xyz="-1.2 1.2 0.08" />
+ <xacro:swerve_steer prefix="4" origin_xyz="-1.2 -1.2 -0.087123" joint_origin_xyz="-1.2 -1.2 0.08" /> 
+  
+ <!-- Gazebo plugin for ROS Control -->
+   <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+</robot>

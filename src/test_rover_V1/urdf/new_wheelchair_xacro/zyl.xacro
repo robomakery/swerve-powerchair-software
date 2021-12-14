@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="new_wheelchair">
+
+<xacro:macro name="zyl_def" params=" name_zyl origin_xyz origin_orientation radius lenght mass parent_name joint_name joint_type joint_origin joint_orientation lim_eff lim_vel">
+
+      <joint name="${joint_name}" type="${joint_type}">
+    <parent link="${parent_name}"/>
+    <child link="${name_zyl}"/>
+    <origin xyz="${joint_origin}" rpy="${joint_orientation}"/>
+    <axis xyz="0 0 1" />
+    <limit effort="${lim_eff}" velocity="${lim_vel}"/> 
+    <dynamics damping="0.7"/>
+    </joint>
+
+
+
+<link name="${name_zyl}">
+
+    <collision name="collision_zyl_${name}">
+      <origin xyz="${origin_xyz}" rpy="${origin_orientation}"/>
+      <geometry>
+	<cylinder radius="${radius}" length="${lenght}" />
+      </geometry>
+    </collision>
+    
+    <visual name="visual_zyl_${name}">
+      <origin  xyz="${origin_xyz}" rpy="${origin_orientation}" />
+      <geometry>
+       	<cylinder radius="${radius}" length="${lenght}" />
+      </geometry>
+    </visual>
+    
+    <inertial name="inertial_zyl_${name}">
+      <origin
+        xyz="${origin_xyz}"
+        rpy="${origin_orientation}" />
+     <mass
+        value="${mass}" />
+     <inertia
+        ixx="${mass * (radius*radius) / 2}"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="${mass * (radius*radius) / 4}"
+        iyz="0.0"
+        izz="${mass * (radius*radius) / 4}" />
+    </inertial>    
+</link>
+
+         <gazebo reference="${name_zyl}">
+      <material>Gazebo/Grey</material>
+    </gazebo>  
+    
+    
+   
+</xacro:macro>
+</robot>

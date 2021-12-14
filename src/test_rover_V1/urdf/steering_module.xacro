@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot  xmlns:xacro="http://www.ros.org/wiki/xacro" name="new_wheelchair">
+  
+  
+  
+  <xacro:include filename="$(find test_rover_V1)/urdf/box.xacro" />
+  <xacro:include filename="$(find test_rover_V1)/urdf/zyl.xacro" />
+  
+  
+<xacro:macro name="steering_module" params=" name prefix parent_name joint_origin" >
+
+  
+ <xacro:zyl_def name="fork_up_${prefix}" origin_xyz="0 0 -0.04" origin_orientation="0 0 0" radius="0.02" lenght="0.08" mass="1.2" parent_name="${parent_name}" joint_name="steer_joint_${prefix}" joint_type="continuous" joint_origin="${joint_origin}" joint_orientation="0 0 0" lim_eff="20" lim_vel="10"/>
+ 
+<transmission name="steer_joint_${prefix}_transmission">
+	  <type>transmission_interface/SimpleTransmission</type>
+	  <actuator name="motor_${prefix}">
+		  <mechanicalReduction>1/90</mechanicalReduction>
+	  </actuator>
+	  <joint name="steer_joint_${prefix}">
+	 <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+	  </joint>
+  </transmission>
+
+
+ <xacro:box_def name="support_${prefix}" origin_xyz="0 0 -0.01" lenght="0.04" breadth="0.15" height="0.02" mass="1.2" parent_name="fork_up_${prefix}" joint_type="fixed" joint_origin="0 0 -0.08" />
+ 
+ <xacro:box_def name="fork_left_${prefix}" origin_xyz="0 0 -0.075" lenght="0.05" breadth="0.02" height="0.15" mass="1.1" parent_name="support_${prefix}" joint_type="fixed" joint_origin="0 0.075 -0.005" />
+ 
+ <xacro:box_def name="fork_right_${prefix}" origin_xyz="0 0 -0.075" lenght="0.05" breadth="0.02" height="0.15" mass="1.1" parent_name="support_${prefix}" joint_type="fixed" joint_origin="0 -0.075 -0.005" />            
+ <!-- <xacro:zyl_def name="wheel_axis_${prefix}" origin_xyz="0 0 0" origin_orientation="0 0 0" radius="0.01" lenght="0.125" mass="0.5" parent_name="fork_left_${prefix}" joint_name="wheel_axis_joint_${prefix}" joint_type="fixed" joint_origin="0 -0.075 -0.045" joint_orientation="-1.57 0 0" /> 
+  -->
+  <xacro:zyl_def name="wheel_${prefix}" origin_xyz="0 0 0" origin_orientation="0 0 0" radius="0.1" lenght="0.08" mass="1.5" parent_name="fork_left_${prefix}" joint_name="wheel_joint_${prefix}" joint_type="continuous" joint_origin="0 -0.075 -0.125" joint_orientation="-1.57 0 0" lim_eff="20" lim_vel="40"/> 
+      <!-- This block connects the head_swivel joint to an actuator (motor), which informs both
+  simulation and visualization of the robot -->
+  <transmission name="wheel_joint_${prefix}">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="wheel_motor_${prefix}">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="wheel_joint_${prefix}">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+ 
+    <gazebo reference="wheel_${prefix}">
+      <mu1 value="2.780"/>
+      <mu2 value="2.500"/>
+      <kp value="1000000000.0" />
+      <kd value="0.8" /> 
+      <material>Gazebo/Grey</material>
+    </gazebo> 
+    
+        <gazebo reference="fork_up_${prefix}">
+      <mu1 value="2.780"/>
+      <mu2 value="2.700"/>
+      <kp value="10000000000.0" />
+      <kd value="0.8" /> 
+      <material>Gazebo/Grey</material>
+    </gazebo> 
+
+</xacro:macro>  
+</robot>
+  

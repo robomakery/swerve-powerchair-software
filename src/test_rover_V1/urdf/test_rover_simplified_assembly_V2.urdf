@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="test_rover_simplified_assembly_V2">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0159207082933907 0.000565056852479075 0.0528175477548687"
+        rpy="0 0 0" />
+      <mass
+        value="2.05900575740713" />
+      <inertia
+        ixx="0.00837212475342076"
+        ixy="-3.33596521092134E-07"
+        ixz="-4.86633641403138E-06"
+        iyy="0.0108216841690878"
+        iyz="-7.9312141258394E-11"
+        izz="0.0186528531491666" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_simplified_assembly_V2/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_simplified_assembly_V2/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="steer_body_1">
+    <inertial>
+      <origin
+        xyz="0 0 -0.0446500373346819"
+        rpy="0 0 0" />
+      <mass
+        value="0.321830867642157" />
+      <inertia
+        ixx="0.000403119230494531"
+        ixy="3.04070508856324E-20"
+        ixz="1.97802556303847E-20"
+        iyy="0.000447396150005123"
+        iyz="-1.61096664292117E-20"
+        izz="0.000288586777617234" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_simplified_assembly_V2/meshes/wheel_support.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_simplified_assembly_V2/meshes/wheel_support.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="steer_joint_1"
+    type="continuous">
+    <origin
+      xyz="0.12165 0 0.013"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="steer_body_1" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="wheel_1">
+    <inertial>
+      <origin
+        xyz="0 -6.93889390390723E-18 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.197946274165105" />
+      <inertia
+        ixx="0.000265311350188973"
+        ixy="-2.32776547352845E-20"
+        ixz="1.95129106061818E-21"
+        iyy="0.000143297926614517"
+        iyz="8.470329472543E-21"
+        izz="0.000143297926614517" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_simplified_assembly_V2/meshes/wheel_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_simplified_assembly_V2/meshes/wheel_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_joint_1"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.06"
+      rpy="1.6642 0 -1.5708" />
+    <parent
+      link="steer_body_1" />
+    <child
+      link="wheel_1" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>

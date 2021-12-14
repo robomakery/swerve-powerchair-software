@@ -1,0 +1,136 @@
+<sdf version='1.7'>
+  <model name='new_wheelchair'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='footprint_joint' type='fixed'>
+      <pose relative_to='base_link'>0 0 0.1 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>base_footprint</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='base_footprint'>
+      <pose relative_to='footprint_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_footprint_collision'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='base_footprint_visual'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='base_footprint_to_chassis_link' type='revolute'>
+      <pose relative_to='base_footprint'>0 0 0.01 0 -0 0</pose>
+      <parent>base_footprint</parent>
+      <child>chassis_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='chassis_link'>
+      <pose relative_to='base_footprint_to_chassis_link'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <mass>20</mass>
+        <inertia>
+          <ixx>1.06817</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.06817</iyy>
+          <iyz>0</iyz>
+          <izz>2.13333</izz>
+        </inertia>
+      </inertial>
+      <collision name='chassis_link_collision'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='chassis_link_visual'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,2837 @@
+<sdf version='1.7'>
+  <model name='new_wheelchair'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <joint name='footprint_joint' type='fixed'>
+      <pose relative_to='base_link'>0 0 0.01 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>base_footprint</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='base_footprint'>
+      <pose relative_to='footprint_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <joint name='base_joint' type='fixed'>
+      <pose relative_to='base_footprint'>0 0 0 0 -0 0</pose>
+      <parent>base_footprint</parent>
+      <child>chassis_link</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='chassis_link'>
+      <pose relative_to='base_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <mass>20</mass>
+        <inertia>
+          <ixx>1.06817</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.06817</iyy>
+          <iyz>0</iyz>
+          <izz>2.13333</izz>
+        </inertia>
+      </inertial>
+      <collision name='chassis_link_fixed_joint_lump__collision_chassis_link_collision'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='chassis_link_fixed_joint_lump__visual_chassis_link_visual'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='camera_joint' type='fixed'>
+      <pose relative_to='chassis_link'>0.15 0 0.35 0 0.2 0</pose>
+      <parent>chassis_link</parent>
+      <child>camera_link</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='camera_link'>
+      <pose relative_to='camera_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1e-05</mass>
+        <inertia>
+          <ixx>1e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='camera_link_fixed_joint_lump__camera_collision_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='camera_link_fixed_joint_lump__camera_visual_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='chassis_link_to_armrest_left' type='fixed'>
+      <pose relative_to='chassis_link'>0 0.12 0.015 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>armrest_left</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='armrest_left'>
+      <pose relative_to='chassis_link_to_armrest_left'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.0302083</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.06</iyy>
+          <iyz>0</iyz>
+          <izz>0.0302083</izz>
+        </inertia>
+      </inertial>
+      <collision name='armrest_left_fixed_joint_lump__collision_armrest_left_collision'>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='armrest_left_fixed_joint_lump__visual_armrest_left_visual'>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='chassis_link_to_armrest_right' type='fixed'>
+      <pose relative_to='chassis_link'>0 -0.12 0.015 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>armrest_right</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='armrest_right'>
+      <pose relative_to='chassis_link_to_armrest_right'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.0302083</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.06</iyy>
+          <iyz>0</iyz>
+          <izz>0.0302083</izz>
+        </inertia>
+      </inertial>
+      <collision name='armrest_right_fixed_joint_lump__collision_armrest_right_collision'>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='armrest_right_fixed_joint_lump__visual_armrest_right_visual'>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='chassis_link_to_backrest_right' type='fixed'>
+      <pose relative_to='chassis_link'>-0.12 0 0.015 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>backrest_right</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='backrest_right'>
+      <pose relative_to='chassis_link_to_backrest_right'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.45 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.176667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.135417</iyy>
+          <iyz>0</iyz>
+          <izz>0.0420833</izz>
+        </inertia>
+      </inertial>
+      <collision name='backrest_right_fixed_joint_lump__collision_backrest_right_collision'>
+        <pose>0 0 0.45 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.9</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='backrest_right_fixed_joint_lump__visual_backrest_right_visual'>
+        <pose>0 0 0.45 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.9</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='chassis_link_to_chair' type='fixed'>
+      <pose relative_to='chassis_link'>0 0 0.015 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>chair</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='chair'>
+      <pose relative_to='chassis_link_to_chair'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <mass>50</mass>
+        <inertia>
+          <ixx>1.88542</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.88542</iyy>
+          <iyz>0</iyz>
+          <izz>2.08333</izz>
+        </inertia>
+      </inertial>
+      <collision name='chair_fixed_joint_lump__collision_chair_collision'>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.45</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='chair_fixed_joint_lump__visual_chair_visual'>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.45</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='steer_joint_1' type='revolute'>
+      <pose relative_to='chassis_link'>-0.35 -0.35 0 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>fork_up_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_1'>
+      <pose relative_to='steer_joint_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>4e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_1_fixed_joint_lump__collision_fork_up_1_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='fork_up_1_fixed_joint_lump__visual_fork_up_1_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='fork_up_1_to_support_1' type='fixed'>
+      <pose relative_to='fork_up_1'>0 0 -0.04 0 -0 0</pose>
+      <parent>fork_up_1</parent>
+      <child>support_1</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='support_1'>
+      <pose relative_to='fork_up_1_to_support_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.000381667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.33333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.000401667</izz>
+        </inertia>
+      </inertial>
+      <collision name='support_1_fixed_joint_lump__collision_support_1_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='support_1_fixed_joint_lump__visual_support_1_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='support_1_to_fork_left_1' type='fixed'>
+      <pose relative_to='support_1'>0 0.035 -0.005 0 -0 0</pose>
+      <parent>support_1</parent>
+      <child>fork_left_1</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_left_1'>
+      <pose relative_to='support_1_to_fork_left_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_left_1_fixed_joint_lump__collision_fork_left_1_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_left_1_fixed_joint_lump__visual_fork_left_1_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='wheel_joint_1' type='revolute'>
+      <pose relative_to='fork_left_1'>0 -0.075 -0.125 -1.57 0 0</pose>
+      <parent>fork_left_1</parent>
+      <child>wheel_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_1'>
+      <pose relative_to='wheel_joint_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_1_fixed_joint_lump__collision_wheel_1_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_1_fixed_joint_lump__visual_wheel_1_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='support_1_to_fork_right_1' type='fixed'>
+      <pose relative_to='support_1'>0 -0.035 -0.005 0 -0 0</pose>
+      <parent>support_1</parent>
+      <child>fork_right_1</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_right_1'>
+      <pose relative_to='support_1_to_fork_right_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_right_1_fixed_joint_lump__collision_fork_right_1_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_right_1_fixed_joint_lump__visual_fork_right_1_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='steer_joint_2' type='revolute'>
+      <pose relative_to='chassis_link'>-0.35 0.35 0 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>fork_up_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_2'>
+      <pose relative_to='steer_joint_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>4e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_2_fixed_joint_lump__collision_fork_up_2_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='fork_up_2_fixed_joint_lump__visual_fork_up_2_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='fork_up_2_to_support_2' type='fixed'>
+      <pose relative_to='fork_up_2'>0 0 -0.04 0 -0 0</pose>
+      <parent>fork_up_2</parent>
+      <child>support_2</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='support_2'>
+      <pose relative_to='fork_up_2_to_support_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.000381667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.33333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.000401667</izz>
+        </inertia>
+      </inertial>
+      <collision name='support_2_fixed_joint_lump__collision_support_2_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='support_2_fixed_joint_lump__visual_support_2_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='support_2_to_fork_left_2' type='fixed'>
+      <pose relative_to='support_2'>0 0.035 -0.005 0 -0 0</pose>
+      <parent>support_2</parent>
+      <child>fork_left_2</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_left_2'>
+      <pose relative_to='support_2_to_fork_left_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_left_2_fixed_joint_lump__collision_fork_left_2_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_left_2_fixed_joint_lump__visual_fork_left_2_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='wheel_joint_2' type='revolute'>
+      <pose relative_to='fork_left_2'>0 -0.075 -0.125 -1.57 0 0</pose>
+      <parent>fork_left_2</parent>
+      <child>wheel_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_2'>
+      <pose relative_to='wheel_joint_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_2_fixed_joint_lump__collision_wheel_2_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_2_fixed_joint_lump__visual_wheel_2_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='support_2_to_fork_right_2' type='fixed'>
+      <pose relative_to='support_2'>0 -0.035 -0.005 0 -0 0</pose>
+      <parent>support_2</parent>
+      <child>fork_right_2</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_right_2'>
+      <pose relative_to='support_2_to_fork_right_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_right_2_fixed_joint_lump__collision_fork_right_2_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_right_2_fixed_joint_lump__visual_fork_right_2_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='steer_joint_3' type='revolute'>
+      <pose relative_to='chassis_link'>0.35 0.35 0 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>fork_up_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_3'>
+      <pose relative_to='steer_joint_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>4e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_3_fixed_joint_lump__collision_fork_up_3_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='fork_up_3_fixed_joint_lump__visual_fork_up_3_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='fork_up_3_to_support_3' type='fixed'>
+      <pose relative_to='fork_up_3'>0 0 -0.04 0 -0 0</pose>
+      <parent>fork_up_3</parent>
+      <child>support_3</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='support_3'>
+      <pose relative_to='fork_up_3_to_support_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.000381667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.33333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.000401667</izz>
+        </inertia>
+      </inertial>
+      <collision name='support_3_fixed_joint_lump__collision_support_3_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='support_3_fixed_joint_lump__visual_support_3_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='support_3_to_fork_left_3' type='fixed'>
+      <pose relative_to='support_3'>0 0.035 -0.005 0 -0 0</pose>
+      <parent>support_3</parent>
+      <child>fork_left_3</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_left_3'>
+      <pose relative_to='support_3_to_fork_left_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_left_3_fixed_joint_lump__collision_fork_left_3_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_left_3_fixed_joint_lump__visual_fork_left_3_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='wheel_joint_3' type='revolute'>
+      <pose relative_to='fork_left_3'>0 -0.075 -0.125 -1.57 0 0</pose>
+      <parent>fork_left_3</parent>
+      <child>wheel_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_3'>
+      <pose relative_to='wheel_joint_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_3_fixed_joint_lump__collision_wheel_3_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_3_fixed_joint_lump__visual_wheel_3_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='support_3_to_fork_right_3' type='fixed'>
+      <pose relative_to='support_3'>0 -0.035 -0.005 0 -0 0</pose>
+      <parent>support_3</parent>
+      <child>fork_right_3</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_right_3'>
+      <pose relative_to='support_3_to_fork_right_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_right_3_fixed_joint_lump__collision_fork_right_3_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_right_3_fixed_joint_lump__visual_fork_right_3_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='steer_joint_4' type='revolute'>
+      <pose relative_to='chassis_link'>0.35 -0.35 0 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>fork_up_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_4'>
+      <pose relative_to='steer_joint_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>4e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_4_fixed_joint_lump__collision_fork_up_4_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='fork_up_4_fixed_joint_lump__visual_fork_up_4_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='fork_up_4_to_support_4' type='fixed'>
+      <pose relative_to='fork_up_4'>0 0 -0.04 0 -0 0</pose>
+      <parent>fork_up_4</parent>
+      <child>support_4</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='support_4'>
+      <pose relative_to='fork_up_4_to_support_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.000381667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.33333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.000401667</izz>
+        </inertia>
+      </inertial>
+      <collision name='support_4_fixed_joint_lump__collision_support_4_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='support_4_fixed_joint_lump__visual_support_4_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='support_4_to_fork_left_4' type='fixed'>
+      <pose relative_to='support_4'>0 0.035 -0.005 0 -0 0</pose>
+      <parent>support_4</parent>
+      <child>fork_left_4</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_left_4'>
+      <pose relative_to='support_4_to_fork_left_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_left_4_fixed_joint_lump__collision_fork_left_4_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_left_4_fixed_joint_lump__visual_fork_left_4_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='wheel_joint_4' type='revolute'>
+      <pose relative_to='fork_left_4'>0 -0.075 -0.125 -1.57 0 0</pose>
+      <parent>fork_left_4</parent>
+      <child>wheel_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_4'>
+      <pose relative_to='wheel_joint_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_4_fixed_joint_lump__collision_wheel_4_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_4_fixed_joint_lump__visual_wheel_4_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='support_4_to_fork_right_4' type='fixed'>
+      <pose relative_to='support_4'>0 -0.035 -0.005 0 -0 0</pose>
+      <parent>support_4</parent>
+      <child>fork_right_4</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_right_4'>
+      <pose relative_to='support_4_to_fork_right_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_right_4_fixed_joint_lump__collision_fork_right_4_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_right_4_fixed_joint_lump__visual_fork_right_4_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='base_joint' type='fixed'>
+      <pose relative_to='base_footprint'>0 0 0 0 -0 0</pose>
+      <parent>base_footprint</parent>
+      <child>chassis_link</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='chassis_link'>
+      <pose relative_to='base_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <mass>20</mass>
+        <inertia>
+          <ixx>1.06817</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.06817</iyy>
+          <iyz>0</iyz>
+          <izz>2.13333</izz>
+        </inertia>
+      </inertial>
+      <collision name='chassis_link_fixed_joint_lump__collision_chassis_link_collision'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='chassis_link_fixed_joint_lump__visual_chassis_link_visual'>
+        <pose>0 0 0.015 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='camera_joint' type='fixed'>
+      <pose relative_to='chassis_link'>0.15 0 0.35 0 0.2 0</pose>
+      <parent>chassis_link</parent>
+      <child>camera_link</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='camera_link'>
+      <pose relative_to='camera_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1e-05</mass>
+        <inertia>
+          <ixx>1e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='camera_link_fixed_joint_lump__camera_collision_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='camera_link_fixed_joint_lump__camera_visual_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='chassis_link_to_armrest_left' type='fixed'>
+      <pose relative_to='chassis_link'>0 0.12 0.015 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>armrest_left</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='armrest_left'>
+      <pose relative_to='chassis_link_to_armrest_left'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.0302083</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.06</iyy>
+          <iyz>0</iyz>
+          <izz>0.0302083</izz>
+        </inertia>
+      </inertial>
+      <collision name='armrest_left_fixed_joint_lump__collision_armrest_left_collision'>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='armrest_left_fixed_joint_lump__visual_armrest_left_visual'>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='chassis_link_to_armrest_right' type='fixed'>
+      <pose relative_to='chassis_link'>0 -0.12 0.015 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>armrest_right</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='armrest_right'>
+      <pose relative_to='chassis_link_to_armrest_right'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.0302083</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.06</iyy>
+          <iyz>0</iyz>
+          <izz>0.0302083</izz>
+        </inertia>
+      </inertial>
+      <collision name='armrest_right_fixed_joint_lump__collision_armrest_right_collision'>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='armrest_right_fixed_joint_lump__visual_armrest_right_visual'>
+        <pose>0 0 0.3 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='chassis_link_to_backrest_right' type='fixed'>
+      <pose relative_to='chassis_link'>-0.12 0 0.015 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>backrest_right</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='backrest_right'>
+      <pose relative_to='chassis_link_to_backrest_right'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.45 0 -0 0</pose>
+        <mass>2</mass>
+        <inertia>
+          <ixx>0.176667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.135417</iyy>
+          <iyz>0</iyz>
+          <izz>0.0420833</izz>
+        </inertia>
+      </inertial>
+      <collision name='backrest_right_fixed_joint_lump__collision_backrest_right_collision'>
+        <pose>0 0 0.45 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.9</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='backrest_right_fixed_joint_lump__visual_backrest_right_visual'>
+        <pose>0 0 0.45 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.9</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='chassis_link_to_chair' type='fixed'>
+      <pose relative_to='chassis_link'>0 0 0.015 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>chair</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='chair'>
+      <pose relative_to='chassis_link_to_chair'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <mass>50</mass>
+        <inertia>
+          <ixx>1.88542</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.88542</iyy>
+          <iyz>0</iyz>
+          <izz>2.08333</izz>
+        </inertia>
+      </inertial>
+      <collision name='chair_fixed_joint_lump__collision_chair_collision'>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.45</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='chair_fixed_joint_lump__visual_chair_visual'>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.45</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='steer_joint_1' type='revolute'>
+      <pose relative_to='chassis_link'>-0.35 -0.35 0 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>fork_up_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_1'>
+      <pose relative_to='steer_joint_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>4e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_1_fixed_joint_lump__collision_fork_up_1_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='fork_up_1_fixed_joint_lump__visual_fork_up_1_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='fork_up_1_to_support_1' type='fixed'>
+      <pose relative_to='fork_up_1'>0 0 -0.04 0 -0 0</pose>
+      <parent>fork_up_1</parent>
+      <child>support_1</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='support_1'>
+      <pose relative_to='fork_up_1_to_support_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.000381667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.33333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.000401667</izz>
+        </inertia>
+      </inertial>
+      <collision name='support_1_fixed_joint_lump__collision_support_1_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='support_1_fixed_joint_lump__visual_support_1_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='support_1_to_fork_left_1' type='fixed'>
+      <pose relative_to='support_1'>0 0.035 -0.005 0 -0 0</pose>
+      <parent>support_1</parent>
+      <child>fork_left_1</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_left_1'>
+      <pose relative_to='support_1_to_fork_left_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_left_1_fixed_joint_lump__collision_fork_left_1_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_left_1_fixed_joint_lump__visual_fork_left_1_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='wheel_joint_1' type='revolute'>
+      <pose relative_to='fork_left_1'>0 -0.075 -0.125 -1.57 0 0</pose>
+      <parent>fork_left_1</parent>
+      <child>wheel_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_1'>
+      <pose relative_to='wheel_joint_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_1_fixed_joint_lump__collision_wheel_1_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_1_fixed_joint_lump__visual_wheel_1_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='support_1_to_fork_right_1' type='fixed'>
+      <pose relative_to='support_1'>0 -0.035 -0.005 0 -0 0</pose>
+      <parent>support_1</parent>
+      <child>fork_right_1</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_right_1'>
+      <pose relative_to='support_1_to_fork_right_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_right_1_fixed_joint_lump__collision_fork_right_1_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_right_1_fixed_joint_lump__visual_fork_right_1_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='steer_joint_2' type='revolute'>
+      <pose relative_to='chassis_link'>-0.35 0.35 0 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>fork_up_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_2'>
+      <pose relative_to='steer_joint_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>4e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_2_fixed_joint_lump__collision_fork_up_2_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='fork_up_2_fixed_joint_lump__visual_fork_up_2_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='fork_up_2_to_support_2' type='fixed'>
+      <pose relative_to='fork_up_2'>0 0 -0.04 0 -0 0</pose>
+      <parent>fork_up_2</parent>
+      <child>support_2</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='support_2'>
+      <pose relative_to='fork_up_2_to_support_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.000381667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.33333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.000401667</izz>
+        </inertia>
+      </inertial>
+      <collision name='support_2_fixed_joint_lump__collision_support_2_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='support_2_fixed_joint_lump__visual_support_2_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='support_2_to_fork_left_2' type='fixed'>
+      <pose relative_to='support_2'>0 0.035 -0.005 0 -0 0</pose>
+      <parent>support_2</parent>
+      <child>fork_left_2</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_left_2'>
+      <pose relative_to='support_2_to_fork_left_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_left_2_fixed_joint_lump__collision_fork_left_2_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_left_2_fixed_joint_lump__visual_fork_left_2_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='wheel_joint_2' type='revolute'>
+      <pose relative_to='fork_left_2'>0 -0.075 -0.125 -1.57 0 0</pose>
+      <parent>fork_left_2</parent>
+      <child>wheel_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_2'>
+      <pose relative_to='wheel_joint_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_2_fixed_joint_lump__collision_wheel_2_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_2_fixed_joint_lump__visual_wheel_2_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='support_2_to_fork_right_2' type='fixed'>
+      <pose relative_to='support_2'>0 -0.035 -0.005 0 -0 0</pose>
+      <parent>support_2</parent>
+      <child>fork_right_2</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_right_2'>
+      <pose relative_to='support_2_to_fork_right_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_right_2_fixed_joint_lump__collision_fork_right_2_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_right_2_fixed_joint_lump__visual_fork_right_2_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='steer_joint_3' type='revolute'>
+      <pose relative_to='chassis_link'>0.35 0.35 0 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>fork_up_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_3'>
+      <pose relative_to='steer_joint_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>4e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_3_fixed_joint_lump__collision_fork_up_3_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='fork_up_3_fixed_joint_lump__visual_fork_up_3_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='fork_up_3_to_support_3' type='fixed'>
+      <pose relative_to='fork_up_3'>0 0 -0.04 0 -0 0</pose>
+      <parent>fork_up_3</parent>
+      <child>support_3</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='support_3'>
+      <pose relative_to='fork_up_3_to_support_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.000381667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.33333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.000401667</izz>
+        </inertia>
+      </inertial>
+      <collision name='support_3_fixed_joint_lump__collision_support_3_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='support_3_fixed_joint_lump__visual_support_3_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='support_3_to_fork_left_3' type='fixed'>
+      <pose relative_to='support_3'>0 0.035 -0.005 0 -0 0</pose>
+      <parent>support_3</parent>
+      <child>fork_left_3</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_left_3'>
+      <pose relative_to='support_3_to_fork_left_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_left_3_fixed_joint_lump__collision_fork_left_3_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_left_3_fixed_joint_lump__visual_fork_left_3_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='wheel_joint_3' type='revolute'>
+      <pose relative_to='fork_left_3'>0 -0.075 -0.125 -1.57 0 0</pose>
+      <parent>fork_left_3</parent>
+      <child>wheel_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_3'>
+      <pose relative_to='wheel_joint_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_3_fixed_joint_lump__collision_wheel_3_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_3_fixed_joint_lump__visual_wheel_3_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='support_3_to_fork_right_3' type='fixed'>
+      <pose relative_to='support_3'>0 -0.035 -0.005 0 -0 0</pose>
+      <parent>support_3</parent>
+      <child>fork_right_3</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_right_3'>
+      <pose relative_to='support_3_to_fork_right_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_right_3_fixed_joint_lump__collision_fork_right_3_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_right_3_fixed_joint_lump__visual_fork_right_3_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='steer_joint_4' type='revolute'>
+      <pose relative_to='chassis_link'>0.35 -0.35 0 0 -0 0</pose>
+      <parent>chassis_link</parent>
+      <child>fork_up_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_4'>
+      <pose relative_to='steer_joint_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>4e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_4_fixed_joint_lump__collision_fork_up_4_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='fork_up_4_fixed_joint_lump__visual_fork_up_4_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='fork_up_4_to_support_4' type='fixed'>
+      <pose relative_to='fork_up_4'>0 0 -0.04 0 -0 0</pose>
+      <parent>fork_up_4</parent>
+      <child>support_4</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='support_4'>
+      <pose relative_to='fork_up_4_to_support_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.000381667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.33333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>0.000401667</izz>
+        </inertia>
+      </inertial>
+      <collision name='support_4_fixed_joint_lump__collision_support_4_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='support_4_fixed_joint_lump__visual_support_4_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='support_4_to_fork_left_4' type='fixed'>
+      <pose relative_to='support_4'>0 0.035 -0.005 0 -0 0</pose>
+      <parent>support_4</parent>
+      <child>fork_left_4</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_left_4'>
+      <pose relative_to='support_4_to_fork_left_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_left_4_fixed_joint_lump__collision_fork_left_4_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_left_4_fixed_joint_lump__visual_fork_left_4_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='wheel_joint_4' type='revolute'>
+      <pose relative_to='fork_left_4'>0 -0.075 -0.125 -1.57 0 0</pose>
+      <parent>fork_left_4</parent>
+      <child>wheel_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_4'>
+      <pose relative_to='wheel_joint_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_4_fixed_joint_lump__collision_wheel_4_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_4_fixed_joint_lump__visual_wheel_4_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='support_4_to_fork_right_4' type='fixed'>
+      <pose relative_to='support_4'>0 -0.035 -0.005 0 -0 0</pose>
+      <parent>support_4</parent>
+      <child>fork_right_4</child>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='fork_right_4'>
+      <pose relative_to='support_4_to_fork_right_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000190833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000208333</iyy>
+          <iyz>0</iyz>
+          <izz>2.41667e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_right_4_fixed_joint_lump__collision_fork_right_4_collision'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='fork_right_4_fixed_joint_lump__visual_fork_right_4_visual'>
+        <pose>0 0 -0.075 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

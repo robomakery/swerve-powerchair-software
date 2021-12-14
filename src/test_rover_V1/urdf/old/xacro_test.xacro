@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+name="test_rover_fourwheel_gazebo">
+
+
+<xacro:macro name="swerve_steer" params="prefix origin_xyz joint_origin_xyz">
+ <link
+    name="steer_body_${prefix}">
+    <inertial>
+      <origin
+      	xyz="${origin_xyz}"
+        rpy="0 0 0" />
+      <mass
+        value="4.12388" />
+      <inertia
+        ixx="1.00025982"
+        ixy="1.5851E-20"
+        ixz="7.5308E-21"
+        iyy="1.00018208"
+        iyz="4.4695E-20"
+        izz="1.00014529" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_V1/meshes/steer_body_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_V1/meshes/steer_body_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="steer_joint_${prefix}"
+    type="continuous">
+    <origin
+      xyz="${joint_origin_xyz}"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="steer_body_${prefix}" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <transmission name="steer_joint_${prefix}_transmission">
+	  <type>transmission_interface/SimpleTransmission</type>
+	  <actuator name="motor_${prefix}">
+		  <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+	  <joint name="steer_joint_${prefix}">
+		  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+	  </joint>
+</transmission>
+  <link
+    name="wheel_${prefix}">
+    <inertial>
+      <origin
+        xyz="0 -6.9388E-18 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.19795" />
+      <inertia
+        ixx="0.00026531"
+        ixy="-1.5846E-20"
+        ixz="-2.0037E-20"
+        iyy="0.0001433"
+        iyz="1.3553E-20"
+        izz="1.0001433" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_V1/meshes/wheel_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_rover_V1/meshes/wheel_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_joint_${prefix}"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.127"
+      rpy="1.6642 0 -1.5708" />
+    <parent
+      link="steer_body_${prefix}" />
+    <child
+      link="wheel_${prefix}" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  
+    <!-- This block connects the head_swivel joint to an actuator (motor), which informs both
+  simulation and visualization of the robot -->
+  <transmission name="wheel_joint_${prefix}">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="wheel_motor_${prefix}">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="wheel_joint_${prefix}">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+      
+      <gazebo reference="wheel_${prefix}">
+      <mu1 value="200.0"/>
+      <mu2 value="100.0"/>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+      <material>Gazebo/Grey</material>
+    </gazebo>
+  
+</xacro:macro>
+</robot>

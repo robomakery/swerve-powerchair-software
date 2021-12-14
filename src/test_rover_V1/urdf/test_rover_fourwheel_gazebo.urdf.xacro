@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  xmlns:xacro="http://www.ros.org/wiki/xacro"
+  name="test_rover_fourwheel_gazebo">
+  
+  
+  <xacro:include filename="$(find test_rover_V1)/urdf/xacro_test.xacro" />
+  
+  <link    name="base_link"/>
+
+  <link    name="base_footprint"/>
+
+  <joint    name="base_joint"    type="fixed">
+    <origin      xyz="-0.0825 0.23 0.001"      rpy="0 0 0" />
+    <parent      link="base_link" />
+    <child       link="chassis_link" />
+   </joint>
+
+  <joint    name="footprint_joint"    type="fixed">
+    <origin      xyz="0.0 0.0 0.001"      rpy="0 0 3.14" />
+    <child       link="base_link" />
+    <parent      link="base_footprint" />
+   </joint>
+   
+  <link
+    name="chassis_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0012818"
+        rpy="0 0 0" />
+      <mass
+        value="1000.059" />
+      <inertia
+        ixx="20"
+        ixy="1"
+        ixz="1"
+        iyy="20 "
+        iyz="1 "
+        izz="40" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.052818"
+        rpy="0 0 0" />
+      <geometry>
+       	<box size="0.8 0.8 0.03" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swerve_steering_controller/test/meshes/wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  
+  <!-- Camera -->
+  <link name="camera_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  
+    <joint name="camera_joint" type="fixed">
+    <axis xyz="0 0 1" />
+    <origin xyz="0.05 0 0.05" rpy="0 0.2 3.14"/>
+    <parent link="chassis_link"/>
+    <child link="camera_link"/>
+  </joint>
+
+  
+    <!-- camera -->
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera1">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>30.0</updateRate>
+        <cameraName>camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  
+      <gazebo reference="chassis_link">
+      <mu1 value="20.0"/>
+      <mu2 value="10.0"/>
+      <kp value="100.0" />
+      <kd value="100.0" />
+      <material>Gazebo/Grey</material>
+    
+    </gazebo>
+  
+ <xacro:swerve_steer prefix="1" origin_xyz="-0.4 -0.4 0.0017123" joint_origin_xyz="-0.4 -0.4 0.001" /> 
+ <xacro:swerve_steer prefix="2" origin_xyz="-0.4 0.4 0.0017123" joint_origin_xyz="-0.4 0.4 0.001" />
+ <xacro:swerve_steer prefix="3" origin_xyz="0.4 0.4 0.0017123" joint_origin_xyz="0.4 0.4 0.001" />
+ <xacro:swerve_steer prefix="4" origin_xyz="0.4 -0.4 0.0017123" joint_origin_xyz="0.4 -0.4 0.001" /> 
+  
+ <!-- Gazebo plugin for ROS Control -->
+   <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+          </plugin>
+ 	 </gazebo>
+   
+   <gazebo>
+    <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>50.0</updateRate>
+      <gaussianNoise>0.01</gaussianNoise>
+      <bodyName>chassis_link</bodyName>
+      <topicName>odomw</topicName>
+    </plugin>
+  </gazebo>
+  
+  
+    <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>chassis_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>chassis_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+  
+  
+  
+  
+  
+  
+  
+  
+</robot>

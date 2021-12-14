@@ -1,0 +1,1770 @@
+<sdf version='1.7'>
+  <model name='new_wheelchair'>
+    <link name='base_link'>
+      <inertial>
+        <pose>-0.001281 -0 0.086388 0 -0 0</pose>
+        <mass>562</mass>
+        <inertia>
+          <ixx>33.4545</ixx>
+          <ixy>1.77793e-20</ixy>
+          <ixz>0.279799</ixz>
+          <iyy>33.5085</iyy>
+          <iyz>-1.0601e-18</iyz>
+          <izz>49.3961</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_fixed_joint_lump__chassis_link_collision'>
+        <pose>0 0 0.025 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__camera_link_collision_collision_1'>
+        <pose>0.366544 0 0.673223 0 0.4 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__armrest_left_collision_2'>
+        <pose>0 0.24 0.34 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__armrest_right_collision_3'>
+        <pose>0 -0.24 0.34 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__backrest_right_collision_4'>
+        <pose>-0.24 0 0.49 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.9</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__chair_collision_5'>
+        <pose>0 0 0.24 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.45</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='base_link_fixed_joint_lump__chassis_link_visual'>
+        <pose>0 0 0.025 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.8 0.8 0.03</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__camera_link_visual_visual_1'>
+        <pose>0.366544 0 0.673223 0 0.4 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__armrest_left_visual_2'>
+        <pose>0 0.24 0.34 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__armrest_right_visual_3'>
+        <pose>0 -0.24 0.34 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.05 0.6</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__backrest_right_visual_4'>
+        <pose>-0.24 0 0.49 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.5 0.9</size>
+          </box>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__chair_visual_5'>
+        <pose>0 0 0.24 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.45</size>
+          </box>
+        </geometry>
+      </visual>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <sensor name='camera1' type='camera'>
+        <update_rate>30</update_rate>
+        <camera name='head'>
+          <horizontal_fov>1.39626</horizontal_fov>
+          <image>
+            <width>800</width>
+            <height>800</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>300</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+          <alwaysOn>1</alwaysOn>
+          <updateRate>30.0</updateRate>
+          <cameraName>camera1</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+        <pose>0.15 0 0.36 0 0.2 0</pose>
+      </sensor>
+    </link>
+    <joint name='steer_joint_1' type='revolute'>
+      <pose relative_to='base_link'>-0.35 -0.35 0.02 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>fork_up_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_1'>
+      <pose relative_to='steer_joint_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <mass>1.2</mass>
+        <inertia>
+          <ixx>0.00460333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00325667</iyy>
+          <iyz>0</iyz>
+          <izz>0.00170333</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_1_fixed_joint_lump__collision_fork_up_1_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='fork_up_1_fixed_joint_lump__support_1_collision_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_1_fixed_joint_lump__fork_left_1_collision_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_1_fixed_joint_lump__fork_right_1_collision_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fork_up_1_fixed_joint_lump__visual_fork_up_1_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='fork_up_1_fixed_joint_lump__support_1_visual_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_1_fixed_joint_lump__fork_left_1_visual_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_1_fixed_joint_lump__fork_right_1_visual_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='wheel_joint_1' type='revolute'>
+      <pose relative_to='fork_up_1'>0 -0.005 -0.215 -1.57 0 0</pose>
+      <parent>fork_up_1</parent>
+      <child>wheel_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_1'>
+      <pose relative_to='wheel_joint_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_1_fixed_joint_lump__collision_wheel_1_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_1_fixed_joint_lump__visual_wheel_1_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='steer_joint_2' type='revolute'>
+      <pose relative_to='base_link'>-0.35 0.35 0.02 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>fork_up_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_2'>
+      <pose relative_to='steer_joint_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <mass>1.2</mass>
+        <inertia>
+          <ixx>0.00460333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00325667</iyy>
+          <iyz>0</iyz>
+          <izz>0.00170333</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_2_fixed_joint_lump__collision_fork_up_2_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='fork_up_2_fixed_joint_lump__support_2_collision_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_2_fixed_joint_lump__fork_left_2_collision_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_2_fixed_joint_lump__fork_right_2_collision_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fork_up_2_fixed_joint_lump__visual_fork_up_2_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='fork_up_2_fixed_joint_lump__support_2_visual_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_2_fixed_joint_lump__fork_left_2_visual_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_2_fixed_joint_lump__fork_right_2_visual_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='wheel_joint_2' type='revolute'>
+      <pose relative_to='fork_up_2'>0 -0.005 -0.215 -1.57 0 0</pose>
+      <parent>fork_up_2</parent>
+      <child>wheel_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_2'>
+      <pose relative_to='wheel_joint_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_2_fixed_joint_lump__collision_wheel_2_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_2_fixed_joint_lump__visual_wheel_2_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='steer_joint_3' type='revolute'>
+      <pose relative_to='base_link'>0.35 0.35 0.02 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>fork_up_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_3'>
+      <pose relative_to='steer_joint_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <mass>1.2</mass>
+        <inertia>
+          <ixx>0.00460333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00325667</iyy>
+          <iyz>0</iyz>
+          <izz>0.00170333</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_3_fixed_joint_lump__collision_fork_up_3_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='fork_up_3_fixed_joint_lump__support_3_collision_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_3_fixed_joint_lump__fork_left_3_collision_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_3_fixed_joint_lump__fork_right_3_collision_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fork_up_3_fixed_joint_lump__visual_fork_up_3_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='fork_up_3_fixed_joint_lump__support_3_visual_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_3_fixed_joint_lump__fork_left_3_visual_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_3_fixed_joint_lump__fork_right_3_visual_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='wheel_joint_3' type='revolute'>
+      <pose relative_to='fork_up_3'>0 -0.005 -0.215 -1.57 0 0</pose>
+      <parent>fork_up_3</parent>
+      <child>wheel_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_3'>
+      <pose relative_to='wheel_joint_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_3_fixed_joint_lump__collision_wheel_3_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_3_fixed_joint_lump__visual_wheel_3_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='steer_joint_4' type='revolute'>
+      <pose relative_to='base_link'>0.35 -0.35 0.02 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>fork_up_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_4'>
+      <pose relative_to='steer_joint_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <mass>1.2</mass>
+        <inertia>
+          <ixx>0.00460333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00325667</iyy>
+          <iyz>0</iyz>
+          <izz>0.00170333</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_4_fixed_joint_lump__collision_fork_up_4_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='fork_up_4_fixed_joint_lump__support_4_collision_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_4_fixed_joint_lump__fork_left_4_collision_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_4_fixed_joint_lump__fork_right_4_collision_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fork_up_4_fixed_joint_lump__visual_fork_up_4_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='fork_up_4_fixed_joint_lump__support_4_visual_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_4_fixed_joint_lump__fork_left_4_visual_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_4_fixed_joint_lump__fork_right_4_visual_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='wheel_joint_4' type='revolute'>
+      <pose relative_to='fork_up_4'>0 -0.005 -0.215 -1.57 0 0</pose>
+      <parent>fork_up_4</parent>
+      <child>wheel_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_4'>
+      <pose relative_to='wheel_joint_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_4_fixed_joint_lump__collision_wheel_4_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_4_fixed_joint_lump__visual_wheel_4_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='steer_joint_1' type='revolute'>
+      <pose relative_to='base_link'>-0.35 -0.35 0.02 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>fork_up_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_1'>
+      <pose relative_to='steer_joint_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <mass>1.2</mass>
+        <inertia>
+          <ixx>0.00460333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00325667</iyy>
+          <iyz>0</iyz>
+          <izz>0.00170333</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_1_fixed_joint_lump__collision_fork_up_1_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='fork_up_1_fixed_joint_lump__support_1_collision_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_1_fixed_joint_lump__fork_left_1_collision_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_1_fixed_joint_lump__fork_right_1_collision_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fork_up_1_fixed_joint_lump__visual_fork_up_1_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='fork_up_1_fixed_joint_lump__support_1_visual_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_1_fixed_joint_lump__fork_left_1_visual_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_1_fixed_joint_lump__fork_right_1_visual_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='wheel_joint_1' type='revolute'>
+      <pose relative_to='fork_up_1'>0 -0.005 -0.215 -1.57 0 0</pose>
+      <parent>fork_up_1</parent>
+      <child>wheel_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_1'>
+      <pose relative_to='wheel_joint_1'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_1_fixed_joint_lump__collision_wheel_1_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_1_fixed_joint_lump__visual_wheel_1_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='steer_joint_2' type='revolute'>
+      <pose relative_to='base_link'>-0.35 0.35 0.02 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>fork_up_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_2'>
+      <pose relative_to='steer_joint_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <mass>1.2</mass>
+        <inertia>
+          <ixx>0.00460333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00325667</iyy>
+          <iyz>0</iyz>
+          <izz>0.00170333</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_2_fixed_joint_lump__collision_fork_up_2_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='fork_up_2_fixed_joint_lump__support_2_collision_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_2_fixed_joint_lump__fork_left_2_collision_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_2_fixed_joint_lump__fork_right_2_collision_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fork_up_2_fixed_joint_lump__visual_fork_up_2_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='fork_up_2_fixed_joint_lump__support_2_visual_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_2_fixed_joint_lump__fork_left_2_visual_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_2_fixed_joint_lump__fork_right_2_visual_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='wheel_joint_2' type='revolute'>
+      <pose relative_to='fork_up_2'>0 -0.005 -0.215 -1.57 0 0</pose>
+      <parent>fork_up_2</parent>
+      <child>wheel_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_2'>
+      <pose relative_to='wheel_joint_2'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_2_fixed_joint_lump__collision_wheel_2_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_2_fixed_joint_lump__visual_wheel_2_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='steer_joint_3' type='revolute'>
+      <pose relative_to='base_link'>0.35 0.35 0.02 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>fork_up_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_3'>
+      <pose relative_to='steer_joint_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <mass>1.2</mass>
+        <inertia>
+          <ixx>0.00460333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00325667</iyy>
+          <iyz>0</iyz>
+          <izz>0.00170333</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_3_fixed_joint_lump__collision_fork_up_3_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='fork_up_3_fixed_joint_lump__support_3_collision_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_3_fixed_joint_lump__fork_left_3_collision_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_3_fixed_joint_lump__fork_right_3_collision_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fork_up_3_fixed_joint_lump__visual_fork_up_3_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='fork_up_3_fixed_joint_lump__support_3_visual_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_3_fixed_joint_lump__fork_left_3_visual_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_3_fixed_joint_lump__fork_right_3_visual_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='wheel_joint_3' type='revolute'>
+      <pose relative_to='fork_up_3'>0 -0.005 -0.215 -1.57 0 0</pose>
+      <parent>fork_up_3</parent>
+      <child>wheel_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_3'>
+      <pose relative_to='wheel_joint_3'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_3_fixed_joint_lump__collision_wheel_3_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_3_fixed_joint_lump__visual_wheel_3_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='steer_joint_4' type='revolute'>
+      <pose relative_to='base_link'>0.35 -0.35 0.02 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>fork_up_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='fork_up_4'>
+      <pose relative_to='steer_joint_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <mass>1.2</mass>
+        <inertia>
+          <ixx>0.00460333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00325667</iyy>
+          <iyz>0</iyz>
+          <izz>0.00170333</izz>
+        </inertia>
+      </inertial>
+      <collision name='fork_up_4_fixed_joint_lump__collision_fork_up_4_collision'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='fork_up_4_fixed_joint_lump__support_4_collision_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_4_fixed_joint_lump__fork_left_4_collision_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='fork_up_4_fixed_joint_lump__fork_right_4_collision_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='fork_up_4_fixed_joint_lump__visual_fork_up_4_visual'>
+        <pose>0 0 -0.04 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='fork_up_4_fixed_joint_lump__support_4_visual_1'>
+        <pose>0 0 -0.08 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.04 0.15 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_4_fixed_joint_lump__fork_left_4_visual_2'>
+        <pose>0 0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='fork_up_4_fixed_joint_lump__fork_right_4_visual_3'>
+        <pose>0 -0.07 -0.165 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.02 0.15</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='wheel_joint_4' type='revolute'>
+      <pose relative_to='fork_up_4'>0 -0.005 -0.215 -1.57 0 0</pose>
+      <parent>fork_up_4</parent>
+      <child>wheel_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.7</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wheel_4'>
+      <pose relative_to='wheel_joint_4'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5.5</mass>
+        <inertia>
+          <ixx>0.0275</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01375</iyy>
+          <iyz>0</iyz>
+          <izz>0.01375</izz>
+        </inertia>
+      </inertial>
+      <collision name='wheel_4_fixed_joint_lump__collision_wheel_4_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='wheel_4_fixed_joint_lump__visual_wheel_4_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <plugin name='ground_truth' filename='libgazebo_ros_p3d.so'>
+      <alwaysOn>1</alwaysOn>
+      <updateRate>50.0</updateRate>
+      <gaussianNoise>0.01</gaussianNoise>
+      <bodyName>base_link</bodyName>
+      <topicName>odomw</topicName>
+    </plugin>
+    <static>0</static>
+    <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </model>
+</sdf>

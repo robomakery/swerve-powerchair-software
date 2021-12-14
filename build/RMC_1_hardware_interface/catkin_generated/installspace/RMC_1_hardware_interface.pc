@@ -1,0 +1,8 @@
+prefix=/home/dhrengineering/catkin_ws/install
+
+Name: RMC_1_hardware_interface
+Description: Description of RMC_1_hardware_interface
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lRMC_1_hardware_interface
+Requires: actionlib control_msgs controller_manager hardware_interface roscpp trajectory_msgs pluginlib transmission_interface urdf control_toolbox joint_limits_interface

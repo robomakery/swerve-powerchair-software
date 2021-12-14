@@ -1,0 +1,39 @@
+ROBOT:
+        controller:
+                state:
+                        type: joint_state_controller/JointStateController
+                        publish_rate: 50
+                position:
+                        steer_joint_1:
+                                type: position_controllers/JointPositionController
+                                joint: steer_joint_1
+                                pid: {p: 10.0, i: 0.01, d: 200.0}
+                        steer_joint_2:
+                                type: position_controllers/JointPositionController
+                                joint: steer_joint_2
+                                pid: {p: 10.0, i: 0.01, d: 200.0}                                
+                        steer_joint_3:
+                                type: position_controllers/JointPositionController
+                                joint: steer_joint_3
+                                pid: {p: 10.0, i: 0.01, d: 200.0}
+                        steer_joint_4:
+                                type: position_controllers/JointPositionController
+                                joint: steer_joint_4
+                                pid: {p: 10.0, i: 0.01, d: 200.0}
+                velocity:
+                        wheel_joint_1:
+                                type: velocity_controllers/JointVelocityController
+                                joint: wheel_joint_1
+                                pid: {p: 10.0, i: 0.01, d: 100.0}
+                        wheel_joint_2:
+                                type: velocity_controllers/JointVelocityController
+                                joint: wheel_joint_2
+                                pid: {p: 10.0, i: 0.01, d: 100.0}
+                        wheel_joint_3:
+                                type: velocity_controllers/JointVelocityController
+                                joint: wheel_joint_3
+                                pid: {p: 10.0, i: 0.01, d: 100.0}
+                        wheel_joint_4:
+                                type: velocity_controllers/JointVelocityController
+                                joint: wheel_joint_4
+                                pid: {p: 10.0, i: 0.01, d: 100.0}                                                                
