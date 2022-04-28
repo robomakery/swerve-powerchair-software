@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+  name="ROS_Module_Assembly_Four_Wheel_v1">
+  
+
+  <xacro:macro name="steering_module" params="prefix parent_name joint_origin joint_orientation fork_orientation wheel_rot_axis" >
+
+
+  <joint
+    name="base_to_chassis_${prefix}"
+    type="fixed">
+    <!-- <origin
+      xyz="0.25 -0.24 -0.0209"
+      rpy="0 0 1.5708" /> -->
+      <origin
+      xyz="${joint_origin}"
+      rpy="${joint_orientation}" />
+    <child
+      link="base_link_module_${prefix}" />
+    <parent
+      link="${parent_name}" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link
+    name="base_link_module_${prefix}">
+    <inertial>
+      <origin
+        xyz="0.017724 -0.21428 -0.039095"
+        rpy="0 0 0" />
+      <mass
+        value="29.51961" />
+      <inertia
+        ixx="2.0063697"
+        ixy="-0.1"
+        ixz="0.1"
+        iyy="0.38478"
+        iyz="-3.8651E-03"
+        izz="2.079" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="base_link_module_${prefix}">  
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  <link
+    name="input_rot_motor_${prefix}">
+    <inertial>
+      <origin
+        xyz="-4.2772E-05 0.032009 7.4354E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.025091" />
+      <inertia
+        ixx="7.1785E-06"
+        ixy="6.7784E-10"
+        ixz="-1.1692E-08"
+        iyy="2.3424E-06"
+        iyz="-1.1777E-09"
+        izz="7.1921E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/input_rot_motor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/input_rot_motor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="input_rot_motor_${prefix}">  
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  <joint
+    name="base_to_input_rot_motor_${prefix}"
+    type="continuous">
+    <origin
+      xyz="-0.0042500000000002 -0.18426521062757 -0.00899999999999995"
+      rpy="1.5707963267949 0 -1.5707963267949" />
+    <parent
+      link="base_link_module_${prefix}" />
+    <child
+      link="input_rot_motor_${prefix}" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  
+  <transmission name="base_to_input_rot_motor_${prefix}_transmission">
+	  <type>transmission_interface/SimpleTransmission</type>
+	  <actuator name="base_to_input_rot_motor_${prefix}_motor">
+		  <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+	  <joint name="base_to_input_rot_motor_${prefix}">
+	 <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+  </transmission>
+  
+  
+  <link
+    name="input_transl_motor_${prefix}">
+    <inertial>
+      <origin
+        xyz="-1.865E-05 0.047153 -6.6546E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.032255" />
+      <inertia
+        ixx="1.5951E-05"
+        ixy="1.8513E-09"
+        ixz="3.575E-09"
+        iyy="2.7304E-06"
+        iyz="6.6055E-09"
+        izz="1.5963E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/input_transl_motor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/input_transl_motor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="input_transl_motor_${prefix}">  
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  
+  <joint
+    name="base_to_transl_input_${prefix}"
+    type="continuous">
+    <origin
+      xyz="0.0761500000000042 -0.168973339641516 -0.00800000000000012"
+      rpy="1.5707963267949 0 -1.85423215999576" />
+    <parent
+      link="base_link_module_${prefix}" />
+    <child
+      link="input_transl_motor_${prefix}" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  
+  
+  <transmission name="base_to_input_transl_motor_${prefix}_transmission">
+	  <type>transmission_interface/SimpleTransmission</type>
+	  <actuator name="base_to_input_transl_motor_${prefix}_motor">
+		  <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+	  <joint name="base_to_transl_input_${prefix}">
+	 <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+	  </joint>
+  </transmission>
+  
+  
+  <link
+    name="fork_${prefix}">
+    <inertial>
+      <origin
+        xyz="0 0.01 -0.15"
+        rpy="0 0 0" />
+      <mass
+        value="5.844" />
+      <inertia
+        ixx="0.227208"
+        ixy="-1.84E-05"
+        ixz="-5.06E-05"
+        iyy="0.2189902"
+        iyz="0.012221494"
+        izz="0.02081469" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/fork.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/fork.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="fork_${prefix}">  
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  <joint
+    name="base_to_rot_fork_${prefix}"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="${fork_orientation}" />
+    <parent
+      link="base_link_module_${prefix}" />
+    <child
+      link="fork_${prefix}" />
+    <axis
+      xyz="0 0 1" />
+      <limit effort="5.0" velocity="3"/>
+  </joint>
+  
+  <transmission name="base_to_rot_fork_${prefix}_transmission">
+	  <type>transmission_interface/SimpleTransmission</type>
+	  <actuator name="base_to_rot_fork_${prefix}_motor">
+		  <mechanicalReduction>1</mechanicalReduction>
+	  </actuator>
+	  <joint name="base_to_rot_fork_${prefix}">
+	 <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+	  </joint>
+  </transmission>
+  
+  
+  <link
+    name="wheel_${prefix}">
+    <inertial>
+      <origin
+        xyz="0 0 -0.0139564"
+        rpy="0 0 0" />
+      <mass
+        value="2.40757" />
+      <inertia
+        ixx="0.018833904"
+        ixy="-1.8E-06"
+        ixz="1E-07"
+        iyy="0.032375009"
+        iyz="-0.00727611"
+        izz="0.018833904" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="wheel_${prefix}">
+      <mu1 value="0.7"/>
+      <mu2 value="0.5"/>
+      <kp value="10000000.0" />
+      <kd value="1.0" />  
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  
+  <joint
+    name="fork_to_wheel_${prefix}"
+    type="continuous">
+    <origin
+      xyz="0 0.000500000000000458 -0.335999999999999"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="fork_${prefix}" />
+    <child
+      link="wheel_${prefix}" />
+    <axis
+      xyz="${wheel_rot_axis}" />
+       <limit effort="30.0" velocity="8"/>
+  </joint>
+  
+  <transmission name="fork_to_wheel_transmission_${prefix}">
+	  <type>transmission_interface/SimpleTransmission</type>
+	  <actuator name="fork_to_wheel_motor_${prefix}">
+		  <mechanicalReduction>100</mechanicalReduction>
+	  </actuator>
+	  <joint name="fork_to_wheel_${prefix}">
+	 <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+	  </joint>
+  </transmission>
+  
+  <link
+    name="vert_bevel_shaft_${prefix}">
+    <inertial>
+      <origin
+        xyz="-2.1092E-05 1.2062E-06 -0.034965"
+        rpy="0 0 0" />
+      <mass
+        value="0.11927" />
+      <inertia
+        ixx="0.00012323"
+        ixy="-6.9262E-10"
+        ixz="4.6605E-08"
+        iyy="0.00012322"
+        iyz="-2.6667E-09"
+        izz="6.1731E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/vert_bevel_shaft.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/vert_bevel_shaft.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="vert_bevel_shaft_${prefix}">  
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  <joint
+    name="base_to_rot_bevel_shaft_${prefix}"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="3.1416 0 -1.5708" />
+    <parent
+      link="base_link_module_${prefix}" />
+    <child
+      link="vert_bevel_shaft_${prefix}" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  </xacro:macro>
+</robot>

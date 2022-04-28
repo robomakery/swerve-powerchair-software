@@ -1,8 +1,8 @@
-# Install script for directory: /home/dhrengineering/catkin_ws/src/learning_joy
+# Install script for directory: /home/dhrengineering/catkin_new_wheelchir_module/src/learning_joy
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/dhrengineering/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/dhrengineering/catkin_new_wheelchir_module/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,45 +38,53 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/learning_joy.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/learning_joy.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/learning_joy/cmake" TYPE FILE FILES
-    "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/learning_joyConfig.cmake"
-    "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/learning_joyConfig-version.cmake"
+    "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/learning_joyConfig.cmake"
+    "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/learning_joyConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/learning_joy" TYPE FILE FILES "/home/dhrengineering/catkin_ws/src/learning_joy/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/learning_joy" TYPE FILE FILES "/home/dhrengineering/catkin_new_wheelchir_module/src/learning_joy/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/turtle_teleop_joy.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/turtle_teleop_joy.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_test.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_test.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/rover_teleop_joy.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/rover_teleop_joy.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel_backup.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel_backup.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel_swerve_controller.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel_swerve_controller.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_ws/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel_steering_controller.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel_steering_controller.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel_new_module.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/learning_joy" TYPE PROGRAM FILES "/home/dhrengineering/catkin_new_wheelchir_module/build/learning_joy/catkin_generated/installspace/rover_teleop_joy_fourwheel_new_module_fresh.py")
 endif()
 

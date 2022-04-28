@@ -12,7 +12,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   turtlesim
-  RMC_1_hardware_interface
 )
 
 ## System dependencies are found with CMake's conventions
@@ -171,6 +170,8 @@ include_directories(
    scripts/rover_teleop_joy_fourwheel_backup.py
    scripts/rover_teleop_joy_fourwheel_swerve_controller.py
    scripts/rover_teleop_joy_fourwheel_steering_controller.py
+   scripts/rover_teleop_joy_fourwheel_new_module.py
+   scripts/rover_teleop_joy_fourwheel_new_module_fresh.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 

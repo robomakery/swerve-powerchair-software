@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="ROS_Module_Assembly_v6">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0317243201587634 -0.128858942998281 -0.0390948539276145"
+        rpy="0 0 0" />
+      <mass
+        value="2.19605365865044" />
+      <inertia
+        ixx="0.0063696939795915"
+        ixy="3.38792695900137E-05"
+        ixz="-1.30911858394434E-07"
+        iyy="0.0035477515326301"
+        iyz="-1.1650821227698E-06"
+        izz="0.00903296845626077" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="input_rot_motor">
+    <inertial>
+      <origin
+        xyz="-4.27720584713631E-05 0.0320085266107966 7.43535191642941E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0250911416959944" />
+      <inertia
+        ixx="7.17846660403851E-06"
+        ixy="6.77842383614617E-10"
+        ixz="-1.16921418139205E-08"
+        iyy="2.34243127132187E-06"
+        iyz="-1.1777267416574E-09"
+        izz="7.1920657280501E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/input_rot_motor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/input_rot_motor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_input_rot_motor"
+    type="continuous">
+    <origin
+      xyz="-0.00425 -0.18427 -0.009"
+      rpy="1.5708 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="input_rot_motor" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="input_transl_motor">
+    <inertial>
+      <origin
+        xyz="-1.86501153539576E-05 0.0471529677388538 -6.65458510142325E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0322551764640257" />
+      <inertia
+        ixx="1.59512613902741E-05"
+        ixy="1.85134210099302E-09"
+        ixz="3.57500867077241E-09"
+        iyy="2.73036636453636E-06"
+        iyz="6.6055090731218E-09"
+        izz="1.59630154913409E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/input_transl_motor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/input_transl_motor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_transl_input"
+    type="continuous">
+    <origin
+      xyz="0.07615 -0.16897 -0.008"
+      rpy="1.5708 0 -1.8542" />
+    <parent
+      link="base_link" />
+    <child
+      link="input_transl_motor" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="fork">
+    <inertial>
+      <origin
+        xyz="9.71972270755739E-05 0.0198553943634375 -0.176442224634371"
+        rpy="0 0 0" />
+      <mass
+        value="2.19393880104194" />
+      <inertia
+        ixx="0.00906173079537833"
+        ixy="-1.54635658018766E-08"
+        ixz="4.26201865444648E-06"
+        iyy="0.0114899357916851"
+        iyz="2.93350054754079E-05"
+        izz="0.00390974131552444" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/fork.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/fork.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_rot_fork"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="fork" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="wheel">
+    <inertial>
+      <origin
+        xyz="-0.0455118218515306 3.86107844252415E-06 3.16423035934266E-06"
+        rpy="0 0 0" />
+      <mass
+        value="2.07570429999043" />
+      <inertia
+        ixx="0.032300006871377"
+        ixy="-1.59875092218274E-09"
+        ixz="9.58573111097097E-08"
+        iyy="0.0166149864765961"
+        iyz="-5.31143418125695E-09"
+        izz="0.0166150262434133" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fork_to_wheel"
+    type="continuous">
+    <origin
+      xyz="0 0.049968 -0.336"
+      rpy="-1.6031 0 1.5708" />
+    <parent
+      link="fork" />
+    <child
+      link="wheel" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="vert_bevel_shaft">
+    <inertial>
+      <origin
+        xyz="-4.11906576247567E-06 0.170664525496025 -2.07212903265142E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.119268839432703" />
+      <inertia
+        ixx="0.000123219155791243"
+        ixy="-9.10291133470462E-09"
+        ixz="2.32362997039993E-09"
+        iyy="6.17307007401612E-05"
+        iyz="-4.57855855631893E-08"
+        izz="0.000123230383261293" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/vert_bevel_shaft.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_v6/meshes/vert_bevel_shaft.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_rot_bevel_shaft"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.1357"
+      rpy="1.5708 0 -0.1391" />
+    <parent
+      link="base_link" />
+    <child
+      link="vert_bevel_shaft" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+</robot>

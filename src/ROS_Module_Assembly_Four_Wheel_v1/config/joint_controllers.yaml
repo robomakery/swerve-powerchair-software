@@ -1,0 +1,40 @@
+grisho:
+                state:
+                        type: joint_state_controller/JointStateController
+                        publish_rate: 50
+                position:
+                        base_to_rot_fork_vl:
+                                type: position_controllers/JointPositionController
+                                joint: base_to_rot_fork_vl
+                                pid: {p: 100.0, i: 50.0, d: 10.0}
+                        base_to_rot_fork_vr:
+                                type: position_controllers/JointPositionController
+                                joint: base_to_rot_fork_vr
+                                pid: {p: 100.0, i: 50.0, d: 10.0}
+                        base_to_rot_fork_hr:
+                                type: position_controllers/JointPositionController
+                                joint: base_to_rot_fork_hr
+                                pid: {p: 100.0, i: 50.0, d: 10.0}
+                        base_to_rot_fork_hl:
+                                type: position_controllers/JointPositionController
+                                joint: base_to_rot_fork_hl
+                                pid: {p: 100.0, i: 50.0, d: 10.0}
+                velocity:
+                        fork_to_wheel_vl:
+                                type: velocity_controllers/JointVelocityController
+                                joint: fork_to_wheel_vl
+                                pid: {p: 10.0, i: 2.0, d: 1.0}
+                        fork_to_wheel_vr:
+                                type: velocity_controllers/JointVelocityController
+                                joint: fork_to_wheel_vr
+                                pid: {p: 10.0, i: 2.0, d: 1.0}
+                        fork_to_wheel_hr:
+                                type: velocity_controllers/JointVelocityController
+                                joint: fork_to_wheel_hr
+                                pid: {p: 10.0, i: 2.0, d: 1.0}
+                        fork_to_wheel_hl:
+                                type: velocity_controllers/JointVelocityController
+                                joint: fork_to_wheel_hl
+                                pid: {p: 10.0, i: 2.0, d: 1.0}
+               
+

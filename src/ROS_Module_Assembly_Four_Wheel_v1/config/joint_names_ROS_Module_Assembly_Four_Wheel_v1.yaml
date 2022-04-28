@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'base_to_input_rot_motor', 'base_to_transl_input', 'base_to_rot_fork', 'fork_to_wheel', 'base_to_rot_bevel_shaft', ]

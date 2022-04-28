@@ -11,7 +11,7 @@ from sensor_msgs.msg import JointState
 from nav_msgs.msg import Odometry
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
 
-# Author: Andrew Dai
+# Author: Rosen Todorov
 # This ROS Node converts Joystick inputs from the joy node
 # into commands for turtlesim
 w_last = [0, 0, 0, 0]
@@ -21,13 +21,10 @@ L=10.8;
 W=10.8;
 button_pressed=0;
 button_pressed_gyro=0;
-
-def joint_state_callback(msg):
-	global joint_state=JoinState()
-	joint_state_position[0]=msg.data
-	joint_state.header.stamp=rospy.Time.now();
-	joint
-
+abs_pos_vl=0
+abs_pos_vr=0
+abs_pos_hl=0
+abs_pos_hr=0
 
 def getMotPos(msg):
 	global mot_pos
@@ -35,14 +32,45 @@ def getMotPos(msg):
 
 
 
-def getAbsPos(msg):
-	global abs_pos
-	if (msg.data-2315) >= 0:	
-		abs_pos = (msg.data-2315)/4096
-	if (msg.data-2315) < 0:
-		abs_pos = 1 - (2315-msg.data)/4096
+def getAbsPos_vl(msg_vl):
+	global abs_pos_vl
+	zero_pos=3900
+	if (msg_vl.data-3900) >= 0:	
+		abs_pos_vl = (msg_vl.data-3900)/4096
+	if (msg_vl.data-3900) < 0:
+		abs_pos_vl = 1 - (3900-msg_vl.data)/4096
 	
-	pub_abs_rot_pos.publish(abs_pos)
+	
+	pub_abs_rot_pos_vl.publish(1-abs_pos_vl)
+
+
+def getAbsPos_vr(msg_vr):
+	global abs_pos_vr
+	if (msg_vr.data-3900) >= 0:	
+		abs_pos_vr = (msg_vr.data-3900)/4096
+	if (msg_vr.data-3900) < 0:
+		abs_pos_vr = 1 - (3900-msg_vr.data)/4096
+	pub_abs_rot_pos_vr.publish(abs_pos_vr)
+	
+def getAbsPos_hl(msg_hl):
+	global abs_pos_hl
+	if (msg_hl.data-3900) >= 0:	
+		abs_pos_hl = (msg_hl.data-3900)/4096
+	if (msg_hl.data-3900) < 0:
+		abs_pos_hl = 1 - (3900-msg_hl.data)/4096
+	pub_abs_rot_pos_hl.publish(abs_pos_hl)
+	
+def getAbsPos_hr(msg_hr):
+	global abs_pos_hr
+	if (msg_hr.data-3900) >= 0:	
+		abs_pos_hr = (msg_hr.data-3900)/4096
+	if (msg_hr.data-3900) < 0:
+		abs_pos_hr = 1 - (3900-msg_hr.data)/4096
+	pub_abs_rot_pos_hr.publish(abs_pos_hr)
+	
+
+
+
 	
 
 def getGyro(odom_data):
@@ -134,6 +162,7 @@ def callback(data):
 	
 	v=[vfr,vfl,vrl,vrr]
 	w=[wfr,wfl,wrl,wrr]
+	pub_pos_hl.publish(wfr)
 	
 	
 	#Finding the least angle movement and eventuell inverting wheel speed direction
@@ -144,7 +173,7 @@ def callback(data):
 		#offset need to be add
 		
 		#currentAngle = w_last[i];
-		currentAngle = abs_pos*360;
+		currentAngle = abs_pos_vl*360;
 		currentAngleMod = currentAngle % 360;
 		
 		if currentAngleMod <0:
@@ -212,9 +241,11 @@ def callback(data):
 	
 	
 	if abs(twist.linear.x)>0.06 or abs(twist.linear.y)>0.06 or abs(twist.angular.z)>0.06:
-		pub_pos_vr.publish(14.33*wfr+mot_pos-90*abs_pos);
-		pub_pos_vl.publish(wfl);
-		pub_pos_hl.publish(wrl);
+		
+		pub_pos_vr.publish((-2.1*wfr/math.pi+4.2*abs_pos_vl)+mot_pos)#-84/20*abs_pos_vl)#*(84/20))#+mot_pos-(84/20)*abs_pos_vl);
+		pub_pos_vl.publish(2.1*wfr/math.pi)
+		#pub_pos_vl.publish(wfl);
+		#pub_pos_hl.publish(wrl);
 		pub_pos_hr.publish(wrr);
 	#Current Angle in simulation
 	w_last = w	
@@ -234,28 +265,35 @@ def start():
 	global pub_pos_hr
 	global pub_orientation
 	global pub_cmd
-	global pub_abs_rot_pos
-	
+	global pub_abs_rot_pos_vl
+	global pub_abs_rot_pos_vr
+	global pub_abs_rot_pos_hl
+	global pub_abs_rot_pos_hr 
 	# starts the node
 	rospy.init_node('teleop_rover')
 	
-	pub_pos_vr = rospy.Publisher('/ROBOT/controller/position/steer_joint_1/command', Float64)
-	pub_vel_vr = rospy.Publisher('/ROBOT/controller/velocity/wheel_joint_1/command', Float64)
-	pub_pos_vl = rospy.Publisher('/ROBOT/controller/position/steer_joint_2/command', Float64)
-	pub_vel_vl = rospy.Publisher('/ROBOT/controller/velocity/wheel_joint_2/command', Float64)
-	pub_pos_hl = rospy.Publisher('/ROBOT/controller/position/steer_joint_3/command', Float64)
-	pub_vel_hl = rospy.Publisher('/ROBOT/controller/velocity/wheel_joint_3/command', Float64)
-	pub_pos_hr = rospy.Publisher('/ROBOT/controller/position/steer_joint_4/command', Float64)
-	pub_vel_hr = rospy.Publisher('/ROBOT/controller/velocity/wheel_joint_4/command', Float64)
-	pub_orientation = rospy.Publisher('/orient',Float64)
-	pub_abs_rot_pos = rospy.Publisher('/abs_pos',Float64)
-	pub_cmd = rospy.Publisher('V_SP_y_command', Float64)
+	pub_pos_vr = rospy.Publisher('/ROBOT/controller/position/steer_joint_1/command', Float64,queue_size=5)
+	pub_vel_vr = rospy.Publisher('/ROBOT/controller/velocity/wheel_joint_1/command', Float64,queue_size=5)
+	pub_pos_vl = rospy.Publisher('/ROBOT/controller/position/steer_joint_2/command', Float64,queue_size=5)
+	pub_vel_vl = rospy.Publisher('/ROBOT/controller/velocity/wheel_joint_2/command', Float64,queue_size=5)
+	pub_pos_hl = rospy.Publisher('/ROBOT/controller/position/steer_joint_3/command', Float64,queue_size=5)
+	pub_vel_hl = rospy.Publisher('/ROBOT/controller/velocity/wheel_joint_3/command', Float64,queue_size=5)
+	pub_pos_hr = rospy.Publisher('/ROBOT/controller/position/steer_joint_4/command', Float64,queue_size=5)
+	pub_vel_hr = rospy.Publisher('/ROBOT/controller/velocity/wheel_joint_4/command', Float64,queue_size=5)
+	pub_orientation = rospy.Publisher('/orient',Float64,queue_size=5)
+	pub_abs_rot_pos_vl = rospy.Publisher('/abs_pos_vl',Float64,queue_size=5)
+	pub_abs_rot_pos_vr = rospy.Publisher('/abs_pos_vr',Float64,queue_size=5)
+	pub_abs_rot_pos_hl = rospy.Publisher('/abs_pos_hl',Float64,queue_size=5)
+	pub_abs_rot_pos_hr = rospy.Publisher('/abs_pos_hr',Float64,queue_size=5)
+	#pub_cmd = rospy.Publisher('V_SP_y_command', Float64)
 # subscribed to joystick inputs on topic "joy"
 	rospy.Subscriber("/joy", Joy, callback)
 	rospy.Subscriber("/odomw",Odometry,getGyro)
-	rospy.Subscriber("/encodercount_two",Float64,getAbsPos)
+	rospy.Subscriber("/encodercount_two",Float64,getAbsPos_vl)
+	rospy.Subscriber("/encodercount_one",Float64,getAbsPos_vr)
+	rospy.Subscriber("/encodercount_three",Float64,getAbsPos_hl)
+	rospy.Subscriber("/encodercount_four",Float64,getAbsPos_hr)
 	rospy.Subscriber("/motor_count",Float64,getMotPos)
-	
 	rospy.spin()
 
 if __name__ == '__main__':

@@ -1,2 +1,2 @@
-RMC_1_hardware_interface:learning_joy:odrive_cpp_lib:odrive_publisher:test_rover_V1
--DCATKIN_DEVEL_PREFIX=/home/dhrengineering/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/dhrengineering/catkin_ws/install -G Unix Makefiles
+One_wheel_frame_Assembly_v1:One_wheel_frame_Assembly_v2:ROS_Module_Assembly_Four_Wheel_v1:ROS_Module_Assembly_v2:ROS_Module_Assembly_v4:ROS_Module_Assembly_v5:ROS_Module_Assembly_v6:ROS_Module_Assembly_v7:ROS_Module_Assembly_v8:learning_joy
+-DCATKIN_DEVEL_PREFIX=/home/dhrengineering/catkin_new_wheelchir_module/devel -DCMAKE_INSTALL_PREFIX=/home/dhrengineering/catkin_new_wheelchir_module/install -G Unix Makefiles

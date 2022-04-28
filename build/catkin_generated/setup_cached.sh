@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/home/dhrengineering/catkin_ws/build'
+export PWD='/home/dhrengineering/catkin_new_wheelchir_module/build'

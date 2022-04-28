@@ -1,4 +1,4 @@
-prefix=/home/dhrengineering/catkin_ws/install
+prefix=/home/dhrengineering/catkin_new_wheelchir_module/install
 
 Name: learning_joy
 Description: Description of learning_joy

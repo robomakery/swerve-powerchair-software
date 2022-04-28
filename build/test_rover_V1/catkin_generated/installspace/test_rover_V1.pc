@@ -1,8 +1,0 @@
-prefix=/home/dhrengineering/catkin_ws/install
-
-Name: test_rover_V1
-Description: Description of test_rover_V1
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

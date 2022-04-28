@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="ROS_Module_Assembly_Four_Wheel_v1">
+  
+      <link    name="base_link"/>
+
+  <link    name="base_footprint"/>
+
+  <joint    name="base_joint"    type="fixed">
+    <origin      xyz="0 0 0"      rpy="1.5706 0 0" />
+    <parent      link="base_link" />
+    <child       link="chassis_link" />
+   </joint>
+
+  <joint    name="footprint_joint"    type="fixed">
+    <origin      xyz="0 0 0"      rpy="0 0 0" />
+    <child       link="base_link" />
+    <parent      link="base_footprint" />
+   </joint>
+
+  <link
+    name="chassis_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="1"
+        ixy="0"
+        ixz="0"
+        iyy="1"
+        iyz="0"
+        izz="1" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/chassis_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/chassis_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

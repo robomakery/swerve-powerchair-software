@@ -1,8 +1,0 @@
-joint_limits:
-        steer_joint_1:
-                has_position_limits: false
-                #wheel_joint_1:
-                #has_velocity_limits: true
-                #max_velocity: 10.0
-        wheel_joint_1:
-                has_velocity_limits: false

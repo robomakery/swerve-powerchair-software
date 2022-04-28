@@ -1,0 +1,8 @@
+prefix=/home/dhrengineering/catkin_new_wheelchir_module/install
+
+Name: ROS_Module_Assembly_v5
+Description: Description of ROS_Module_Assembly_v5
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

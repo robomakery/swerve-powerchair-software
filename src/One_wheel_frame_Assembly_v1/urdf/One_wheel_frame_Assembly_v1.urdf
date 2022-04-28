@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="One_wheel_frame_Assembly_v1">
+  <link
+    name="chassis_link">
+    <inertial>
+      <origin
+        xyz="-0.36556 0.0049205 -0.07701"
+        rpy="0 0 0" />
+      <mass
+        value="2.0686" />
+      <inertia
+        ixx="0.034031"
+        ixy="9.0833E-08"
+        ixz="-0.00017281"
+        iyy="0.018983"
+        iyz="-9.0884E-08"
+        izz="0.050597" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://One_wheel_frame_Assembly_v1/meshes/chassis_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://One_wheel_frame_Assembly_v1/meshes/chassis_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="chassis_wheel_left">
+    <inertial>
+      <origin
+        xyz="-0.014 1.1102E-16 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.32038" />
+      <inertia
+        ixx="0.00065681"
+        ixy="3.0857E-20"
+        ixz="5.0633E-21"
+        iyy="0.00034759"
+        iyz="-4.0658E-20"
+        izz="0.00034759" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://One_wheel_frame_Assembly_v1/meshes/chassis_wheel_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.1098 0.1098 0.1098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://One_wheel_frame_Assembly_v1/meshes/chassis_wheel_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="chassis_wheel_left_joint"
+    type="continuous">
+    <origin
+      xyz="-0.6824 0.30592 -0.4201"
+      rpy="-2.5894 0 -1.5708" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="chassis_wheel_left" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="chassis_wheel_right">
+    <inertial>
+      <origin
+        xyz="-0.014 2.2204E-16 -2.2204E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.32038" />
+      <inertia
+        ixx="0.00065681"
+        ixy="-1.6662E-19"
+        ixz="1.9574E-19"
+        iyy="0.00034759"
+        iyz="2.7105E-20"
+        izz="0.00034759" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://One_wheel_frame_Assembly_v1/meshes/chassis_wheel_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.1098 0.1098 0.1098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://One_wheel_frame_Assembly_v1/meshes/chassis_wheel_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="chassis_wheel_right_joint"
+    type="continuous">
+    <origin
+      xyz="-0.6824 -0.32408 -0.4201"
+      rpy="-2.2426 0 -1.5708" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="chassis_wheel_right" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>

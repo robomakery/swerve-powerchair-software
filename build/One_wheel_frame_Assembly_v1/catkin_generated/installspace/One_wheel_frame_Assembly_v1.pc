@@ -1,0 +1,8 @@
+prefix=/home/dhrengineering/catkin_new_wheelchir_module/install
+
+Name: One_wheel_frame_Assembly_v1
+Description: Description of One_wheel_frame_Assembly_v1
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

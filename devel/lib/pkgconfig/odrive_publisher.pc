@@ -1,8 +1,0 @@
-prefix=/home/dhrengineering/catkin_ws/devel
-
-Name: odrive_publisher
-Description: Description of odrive_publisher
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

@@ -1,0 +1,88 @@
+<launch>
+  <arg name="model" 
+  default="$(find ROS_Module_Assembly_Four_Wheel_v1)/urdf/ROS_Module_Assembly_Four_Wheel_v1_fresh.urdf.xacro"/>
+  
+  <arg name="use_tf_static" default="false"/>
+        <arg name="debug" default="false" />
+        <arg name="gui" default="true" />
+        <arg name="pause" default="false" />
+  
+  
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+
+	
+	  
+  <param
+    name="robot_description"
+    command="$(find xacro)/xacro $(arg model)" />
+  
+  <node
+    name="robot_state_publisher_transformer"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  
+  
+  <!-- include gazebo_ros launcher -->
+        <include file="$(find gazebo_ros)/launch/empty_world.launch">
+                <arg name="debug" value="$(arg debug)" />
+                <arg name="gui" value="$(arg gui)" />
+                <arg name="paused" value="$(arg pause)" />
+                <arg name="use_sim_time" value="true" />
+        </include>
+  
+  <node
+    name="spawn_gazebo_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -param robot_description -model ROS_Module_Assembly_Four_Wheel_v1 -z 1"
+    respawn="false" output="screen" />
+  
+     <rosparam command="load"
+            file="$(find ROS_Module_Assembly_Four_Wheel_v1)/config/joint_controllers.yaml" />
+  
+  <!--   <node name="grisho_controller_spawner" pkg="controller_manager" type="spawner" 
+     args="grisho/state
+     	   grisho/position/base_to_rot_fork_vl
+     	   grisho/velocity/fork_to_wheel_vl
+     	   grisho/position/base_to_rot_fork_vr
+     	   grisho/velocity/fork_to_wheel_vr
+     	   grisho/position/base_to_rot_fork_hl
+     	   grisho/velocity/fork_to_wheel_hl
+     	   grisho/position/base_to_rot_fork_hr
+     	   grisho/velocity/fork_to_wheel_hr"
+    	  /> -->
+    <node name="grisho_controller_spawner" pkg="controller_manager" type="spawner" 
+     args="grisho/state
+     grisho/position/base_to_rot_fork_vl
+     grisho/position/base_to_rot_fork_vr
+     grisho/position/base_to_rot_fork_hr
+     grisho/position/base_to_rot_fork_hl
+     grisho/velocity/fork_to_wheel_vl
+     grisho/velocity/fork_to_wheel_vr
+     grisho/velocity/fork_to_wheel_hr
+     grisho/velocity/fork_to_wheel_hl"
+    	  />
+    
+
+   	 <!-- joy node -->
+   <node respawn="true" pkg="joy"
+        type="joy_node" name="rover_joy" >
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.1" /> 
+   <!-- <param name="autorepeat_rate" value="20" /> --> 
+  </node> 
+
+
+ <!-- Axes -->
+  <param name="axis_linear" value="1" type="int"/>
+  <param name="axis_angular" value="0" type="int"/>
+  <param name="scale_linear" value="2" type="double"/>
+  <param name="scale_angular" value="2" type="double"/>
+  
+  <node pkg="learning_joy" type="rover_teleop_joy_fourwheel_new_module_fresh.py" name="teleop_rover"/>
+
+</launch>

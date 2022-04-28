@@ -67,14 +67,14 @@ set(learning_joy_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(learning_joy_SOURCE_PREFIX /home/dhrengineering/catkin_ws/src/learning_joy)
-  set(learning_joy_DEVEL_PREFIX /home/dhrengineering/catkin_ws/devel)
+  set(learning_joy_SOURCE_PREFIX /home/dhrengineering/catkin_new_wheelchir_module/src/learning_joy)
+  set(learning_joy_DEVEL_PREFIX /home/dhrengineering/catkin_new_wheelchir_module/devel)
   set(learning_joy_INSTALL_PREFIX "")
   set(learning_joy_PREFIX ${learning_joy_DEVEL_PREFIX})
 else()
   set(learning_joy_SOURCE_PREFIX "")
   set(learning_joy_DEVEL_PREFIX "")
-  set(learning_joy_INSTALL_PREFIX /home/dhrengineering/catkin_ws/install)
+  set(learning_joy_INSTALL_PREFIX /home/dhrengineering/catkin_new_wheelchir_module/install)
   set(learning_joy_PREFIX ${learning_joy_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/dhrengineering/catkin_ws/install/lib;/home/dhrengineering/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/dhrengineering/catkin_new_wheelchir_module/install/lib;/home/dhrengineering/catkin_new_wheelchir_module/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

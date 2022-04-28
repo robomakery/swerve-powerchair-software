@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+  name="ROS_Module_Assembly_Four_Wheel_v1">
+  
+  
+ <xacro:include filename="$(find ROS_Module_Assembly_Four_Wheel_v1)/urdf/ROS_Module_Assembly_Four_Wheel_v1_module_inertial.xacro" /> 
+  
+  
+  <link    name="base_link"/>
+
+  <link    name="base_footprint"/>
+
+  <joint    name="base_joint"    type="fixed">
+    <origin      xyz="0 0 0"      rpy="1.57 0  0" />
+    <parent      link="base_link" />
+    <child       link="chassis_link" />
+   </joint>
+
+  <joint    name="footprint_joint"    type="fixed">
+    <origin      xyz="0 0 0"      rpy="0 0 0" />
+    <child       link="base_link" />
+    <parent      link="base_footprint" />
+   </joint>
+  
+  
+    <link
+    name="chassis_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="20" />
+      <inertia
+        ixx="10"
+        ixy="0"
+        ixz="0"
+        iyy="10"
+        iyz="0"
+        izz="10" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/chassis_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+
+          filename="package://ROS_Module_Assembly_Four_Wheel_v1/meshes/chassis_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+   <xacro:steering_module prefix="hl" parent_name="chassis_link" joint_origin="-0.25 0.0209 -0.24" joint_orientation="-1.5708 0 0" fork_orientation="0 0 0" wheel_rot_axis="0 0 -1"/> 
+   <xacro:steering_module prefix="vl" parent_name="chassis_link" joint_origin="0.24 0.0209 -0.25" joint_orientation="-1.5708 -1.5708 0" fork_orientation="0 0 1.57" wheel_rot_axis="0 0 -1"/> 
+   <xacro:steering_module prefix="vr" parent_name="chassis_link" joint_origin="0.25 0.0209 0.24" joint_orientation="-1.5708 3.14 0" fork_orientation="0 0 0" wheel_rot_axis="0 0 1"/> 
+   <xacro:steering_module prefix="hr" parent_name="chassis_link" joint_origin="-0.24 0.0209 0.25" joint_orientation="-1.5708 1.5708 0" fork_orientation="0 0 1.57" wheel_rot_axis="0 0 1"/> 
+
+<!-- Gazebo plugin for ROS Control -->
+   <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          </plugin>
+ 	 </gazebo>  
+
+</robot>
